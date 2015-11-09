@@ -6,7 +6,12 @@ FetchStage::FetchStage(StageType _type, AbstractStage *_prevStage) : AbstractSta
 }
 
 void FetchStage::process() {
-  // process for this step 
+	// process for this step
+  	if(!stalled) {
+		ins = getNextIns();
+		ins.setFetchedAtCycle(getCycle());
+		nextStage->setInstruction(ins); // send instruction to next stage
+  	}
 }
 
 FetchStage::~FetchStage() {

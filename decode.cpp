@@ -6,6 +6,7 @@ DecodeStage::DecodeStage(StageType _type, AbstractStage *_prevStage) : AbstractS
 }
 
 void DecodeStage::process() {
+	if(ins.isDa)
 }
 
 DecodeStage::~DecodeStage() {

@@ -65,7 +65,7 @@ class Instruction {
     inline bool isHlt() { return isHlt(type); }
     static inline bool isNop(InstructionType _type) { return (_type == NOP); }
     inline bool isNop() { return isNop(type); }
-    static bool isDataDependent(Instruction &src, Instruction& dest);
+    static bool isDataDependent(Instruction& src, Instruction& dest);
     inline bool isDataDependent(Instruction& dest) { return isDataDependent(*this, dest); }
     inline RegisterType getArg1() { return arg1; }
     inline RegisterType getArg2() { return arg2; }

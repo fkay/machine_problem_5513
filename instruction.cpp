@@ -72,6 +72,17 @@ void Instruction::clear() {
 // This should be used for detecting hazard between in ID stage
 // instruction and later stage instruction
 bool Instruction::isDataDependent(Instruction& src, Instruction& dest) {
+	//check if src is of type that change a register
+	if(src->isAluImm() || src->isAluReg() || src->isLoad()) {
+		if(dest->arg2 == src->arg1) {
+			dest->setSrcCycle1(src->getFetchedAtCycle());
+			return true;
+		}
+		if(dest->arg2 == src->arg1) {
+			dest->setSrcCycle2(src->getFetchedAtCycle());
+			return true;	
+		}
+	}
   return false;
 }
 
