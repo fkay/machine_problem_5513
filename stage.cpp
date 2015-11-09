@@ -28,7 +28,29 @@ AbstractStage::AbstractStage(StageType _type, AbstractStage *_prevStage) : stall
 AbstractStage* AbstractStage::createStage(StageType _type, AbstractStage *_prevStage) {
   // Create a new stage of type _type and set the previous stage to _prevStage
   // Return the newly created stage
-    return NULL;
+  AbstractStage *newStage;
+  switch(_type) {
+  	case IF:
+  		newStage = new FetchStage(_type, _prevStage);
+  		break;
+  	case ID:
+  		newStage = new DecodeStage(_type, _prevStage);
+  		break;
+  	case EX:
+  		newStage = new ExecuteStage(_type, _prevStage);
+  		break;
+  	case MEM:
+  		newStage = new MemaccessStage(_type, _prevStage);
+  		break;
+  	case WR:
+  		newStage = new WritebackStage(_type, _prevStage);
+  		break;
+  	default:
+  		cout << "Incorrect stage type!" << endl;
+  		assert(0);
+  		break;
+  }
+    return newStage; //NULL;
 }
 
 void AbstractStage::setStalled() {

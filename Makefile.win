@@ -1,0 +1,49 @@
+# Project: pipeline
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = decode.o execute.o fetch.o instruction.o memaccess.o pipeline.o stage.o writeback.o
+LINKOBJ  = decode.o execute.o fetch.o instruction.o memaccess.o pipeline.o stage.o writeback.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = pipeline.exe
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+decode.o: decode.cpp
+	$(CPP) -c decode.cpp -o decode.o $(CXXFLAGS)
+
+execute.o: execute.cpp
+	$(CPP) -c execute.cpp -o execute.o $(CXXFLAGS)
+
+fetch.o: fetch.cpp
+	$(CPP) -c fetch.cpp -o fetch.o $(CXXFLAGS)
+
+instruction.o: instruction.cpp
+	$(CPP) -c instruction.cpp -o instruction.o $(CXXFLAGS)
+
+memaccess.o: memaccess.cpp
+	$(CPP) -c memaccess.cpp -o memaccess.o $(CXXFLAGS)
+
+pipeline.o: pipeline.cpp
+	$(CPP) -c pipeline.cpp -o pipeline.o $(CXXFLAGS)
+
+stage.o: stage.cpp
+	$(CPP) -c stage.cpp -o stage.o $(CXXFLAGS)
+
+writeback.o: writeback.cpp
+	$(CPP) -c writeback.cpp -o writeback.o $(CXXFLAGS)

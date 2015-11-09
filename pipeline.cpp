@@ -65,6 +65,14 @@ int main(int argc, char* args[]) {
     // - Call the process function of each stage.
     // - You need to determine whether you should call the process
     //   function starting from the WB stage or FETCH stage.   
+    // start from EB stage and loop to the previous stages, because
+    // a previous stage will overwrite the instruction of the next 
+    // stage
+    
+    for(i=TOTAL_STAGE_TYPE; i>=0; i--) {
+    	stages[i].process();
+	}
+    
     clockCycle++;
   }
 
