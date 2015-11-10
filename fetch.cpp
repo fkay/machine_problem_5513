@@ -7,11 +7,23 @@ FetchStage::FetchStage(StageType _type, AbstractStage *_prevStage) : AbstractSta
 
 void FetchStage::process() {
 	// process for this step
-  	if(!stalled) {
-		ins = getNextIns();
+	if(!stalled) {
+		setInstruction(getNextIns());
 		ins.setFetchedAtCycle(getCycle());
-		nextStage->setInstruction(ins); // send instruction to next stage
+		setPc(getPc()+4);	// advance PC
+		
+		if(ins.isHlt()) {
+			setStalled();	// stall this stage only
+		}
+		
+		nextStage->setInstruction(ins); 	// send instruction to next stage
+		incStatistics(FETCHEDINS);
+		
   	}
+  	else {
+  		incStatistics(STALLCYCLE);
+	}
+	
 }
 
 FetchStage::~FetchStage() {

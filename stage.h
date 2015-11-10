@@ -52,6 +52,7 @@ class AbstractStage {
     void setInstruction(Instruction& _ins); 
     Instruction& getInstruction();
     inline AbstractStage* getPrevStage() { return prevStage; }
+    inline AbstractStage* getNextStage() { return nextStage; }	//included
     static inline void setPtrGetPc(int (*_getPc)()) { getPc = _getPc; }
     static inline void setPtrSetPc(void (*_setPc)(int)) { setPc = _setPc; }
     static inline void setPtrGetNextIns(Instruction& (_getNextIns)()) { getNextIns = _getNextIns; }

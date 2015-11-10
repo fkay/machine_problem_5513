@@ -23,12 +23,12 @@ OverrideOutputName=
 HostApplication=
 UseCustomMakefile=0
 CustomMakefile=
-CommandLine=1
+CommandLine=2
 Folders=
 IncludeVersionInfo=0
 SupportXPThemes=0
-CompilerSet=4
-CompilerSettings=0000000100000000001000000
+CompilerSet=1
+CompilerSettings=0000000000000000001000000
 UnitCount=15
 
 [VersionInfo]

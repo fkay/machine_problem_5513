@@ -6,6 +6,14 @@ MemaccessStage::MemaccessStage(StageType _type, AbstractStage *_prevStage) : Abs
 }
 
 void MemaccessStage::process() {
+	if(ins.isLoad()) {
+		ins.setLoadMemData(getData(ins.getAluOut()));
+	}
+	if(ins.isStore()) {
+		setData(ins.getAluOut(),ins.getArg1());
+	}
+	//pass instruction to next stage
+	nextStage->setInstruction(ins);
 }
 
 MemaccessStage::~MemaccessStage() {

@@ -65,12 +65,18 @@ int main(int argc, char* args[]) {
     // - Call the process function of each stage.
     // - You need to determine whether you should call the process
     //   function starting from the WB stage or FETCH stage.   
-    // start from EB stage and loop to the previous stages, because
+    
+	// start from WB stage and loop to the previous stages, to simulate
+	// that first halfcycle write and last halfcyle read, and also because
     // a previous stage will overwrite the instruction of the next 
     // stage
     
-    for(i=TOTAL_STAGE_TYPE; i>=0; i--) {
-    	stages[i].process();
+    for(i=TOTAL_STAGE_TYPE-1; i>=0; i--) {
+    	stages[i]->process();
+	}
+	
+	if(clockCycle==30) {
+		cout << "break" << endl;
 	}
     
     clockCycle++;
