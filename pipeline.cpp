@@ -82,7 +82,7 @@ int main(int argc, char* args[]) {
     clockCycle++;
   }
 
-  cout << "Name: Abdullah Muzahid, ID: kwg956" << endl;
+  cout << "Name: xxxxxxx, ID: xxxxx" << endl;
   cout << "Fetched ins " << fetchedIns << endl;
   cout << "Finished ins " << finishedIns << endl;
   cout << "Total cycles " << (clockCycle - 1) << endl;
